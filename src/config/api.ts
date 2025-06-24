@@ -3,7 +3,7 @@ import { useState } from 'react';
 // Configuración de la API para el frontend
 export const API_CONFIG = {
   BASE_URL: process.env.NODE_ENV === 'production'
-    ? 'https://tu-dominio.com/api'
+    ? 'https://control-horario-1.onrender.com/api'
     : 'http://localhost:5000/api',
   TIMEOUT: 10000, // 10 segundos
   RETRY_ATTEMPTS: 3,
