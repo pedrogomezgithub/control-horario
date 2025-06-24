@@ -1,0 +1,46 @@
+services:
+  # Base de datos PostgreSQL (Render no soporta MySQL nativamente)
+  - type: pserv
+    name: control-horario-db
+    env: node
+    plan: free
+    databases:
+      - name: control_horario
+        databaseName: control_horario
+        user: control_user
+
+  # Backend API
+  - type: web
+    name: control-horario-api
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_HOST
+        fromDatabase:
+          name: control-horario-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: control-horario-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: control-horario-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: control-horario-db
+          property: password
+      - key: DB_NAME
+        value: control_horario
+      - key: ALLOWED_ORIGINS
+        value: https://same-yx2maar5fj8-latest.netlify.app
+      - key: JWT_SECRET
+        generateValue: true
+    healthCheckPath: /health
