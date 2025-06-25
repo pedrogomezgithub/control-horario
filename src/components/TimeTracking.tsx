@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Clock, Coffee, LogIn, LogOut, Play, Square } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-import { ClockAction } from '@/types';
+import type { ClockAction } from '@/types';
 
 interface TimeTrackingProps {
   employees: any[];
