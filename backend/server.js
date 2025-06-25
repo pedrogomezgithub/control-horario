@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 // Importar configuración de base de datos
-const { createPool, checkDatabaseHealth, initializeDatabase, closePool } = require('./config/database');
+const { createPool, checkDatabaseHealth, initializeDatabase, closePool, executeQuery } = require('./config/database');
 
 // Importar rutas
 const employeesRoutes = require('./routes/employees');
