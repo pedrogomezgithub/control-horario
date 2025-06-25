@@ -13,4 +13,8 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["bippy/dist/jsx-dev-runtime", "bippy/dist/jsx-runtime"],
   },
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+  },
 });
